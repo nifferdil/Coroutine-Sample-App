@@ -1,4 +1,4 @@
-package com.example.fetchapp.fetch
+package com.example.fetchapp.fetch.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fetchapp.R
+import com.example.fetchapp.fetch.api.Item
 
 class ItemAdapter(private val itemList: ArrayList<Item>) : StickyHeaderAdapter,
     ListAdapter<Item, ItemAdapter.ViewHolder>(

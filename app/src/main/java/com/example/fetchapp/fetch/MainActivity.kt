@@ -1,4 +1,4 @@
-package com.example.fetchapp
+package com.example.fetchapp.fetch
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,8 +11,14 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fetchapp.R
 import com.example.fetchapp.databinding.ActivityMainBinding
-import com.example.fetchapp.fetch.*
+import com.example.fetchapp.fetch.api.ApiClient
+import com.example.fetchapp.fetch.api.Item
+import com.example.fetchapp.fetch.api.Service
+import com.example.fetchapp.fetch.api.Status
+import com.example.fetchapp.fetch.ui.ItemAdapter
+import com.example.fetchapp.fetch.ui.StickyHeaderDecoration
 
 class MainActivity : AppCompatActivity() {
     lateinit var mainBinding: ActivityMainBinding
@@ -26,7 +32,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        mainBinding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main
+        )
 
         mainBinding.mainActivity = this
 
@@ -53,7 +61,11 @@ class MainActivity : AppCompatActivity() {
         adapter = ItemAdapter(itemList)
         mainBinding.recyclerView.adapter = adapter
 
-        mainBinding.recyclerView.addItemDecoration(StickyHeaderDecoration(adapter))
+        mainBinding.recyclerView.addItemDecoration(
+            StickyHeaderDecoration(
+                adapter
+            )
+        )
         mainBinding.recyclerView.addItemDecoration(
             DividerItemDecoration(
                 this@MainActivity,

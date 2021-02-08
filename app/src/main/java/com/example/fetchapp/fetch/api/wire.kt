@@ -1,4 +1,4 @@
-package com.example.fetchapp.fetch
+package com.example.fetchapp.fetch.api
 
 data class Item(
     val id: Int,

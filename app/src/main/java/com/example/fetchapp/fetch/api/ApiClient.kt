@@ -1,4 +1,4 @@
-package com.example.fetchapp.fetch
+package com.example.fetchapp.fetch.api
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

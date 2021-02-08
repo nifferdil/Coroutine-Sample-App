@@ -9,7 +9,7 @@
 
         <variable
             name="mainActivity"
-            type="com.example.fetchapp.MainActivity" />
+            type="com.example.fetchapp.fetch.MainActivity" />
 
         <variable
             name="userViewModel"
