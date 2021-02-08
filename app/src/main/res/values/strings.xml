@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Fetch Rewards App</string>
+    <string name="listId_1">listId 1</string>
+    <string name="listId_2">listId 2</string>
+    <string name="listId_3">listId 3</string>
+    <string name="listId_4">listId 4</string>
 </resources>

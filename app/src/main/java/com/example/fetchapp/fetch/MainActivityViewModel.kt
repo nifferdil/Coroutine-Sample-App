@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers
 
-class FetchViewModel(private val apiService: Service) : ViewModel() {
+class MainActivityViewModel(private val apiService: Service) : ViewModel() {
 
     companion object {
         const val DEFAULT_ERROR_MESSAGE = "Something went wrong, please try again later"
@@ -16,7 +16,8 @@ class FetchViewModel(private val apiService: Service) : ViewModel() {
             emit(Resource.success(data = apiService.getData()
                 .filterNot { it.name.isNullOrBlank() }
                 .sortedWith(compareBy({ it.listId }, { it.name }))
-            ))
+            )
+            )
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: DEFAULT_ERROR_MESSAGE))
         }

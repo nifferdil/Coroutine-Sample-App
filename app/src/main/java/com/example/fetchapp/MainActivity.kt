@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     var itemList = ArrayList<Item>()
 
-    private lateinit var viewModel: FetchViewModel
+    private lateinit var viewModel: MainActivityViewModel
     private lateinit var adapter: ItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,20 +41,24 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(
             this,
             ViewModelFactory(ApiClient.apiClient().create(Service::class.java))
-        ).get(FetchViewModel::class.java)
+        ).get(MainActivityViewModel::class.java)
     }
 
     private fun setupUI() {
         mainBinding.recyclerView.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        mainBinding.recyclerView.setItemAnimator(DefaultItemAnimator())
+        mainBinding.recyclerView.itemAnimator = DefaultItemAnimator()
 
         adapter = ItemAdapter(itemList)
         mainBinding.recyclerView.adapter = adapter
+
+        mainBinding.recyclerView.addItemDecoration(StickyHeaderDecoration(adapter))
         mainBinding.recyclerView.addItemDecoration(
-            DividerItemDecoration(this@MainActivity,
-            LinearLayoutManager.VERTICAL)
+            DividerItemDecoration(
+                this@MainActivity,
+                LinearLayoutManager.VERTICAL
+            )
         )
     }
 
@@ -65,12 +69,12 @@ class MainActivity : AppCompatActivity() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         showProgress(false)
-                        resource.data?.let { repos -> retrieveFilteredList(repos) }
+                        resource.data?.let { items -> retrieveFilteredList(items) }
                     }
                     Status.ERROR -> {
                         showProgress(false)
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                        Log.d("status_code","" + it.data)
+                        Log.d("status_code", "" + it.data)
                     }
                     Status.LOADING -> {
                         showProgress(true)
@@ -82,18 +86,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun retrieveFilteredList(items: List<Item>) {
         itemList.addAll(items)
+        adapter.submitList(itemList)
         adapter.notifyDataSetChanged()
     }
-
-//    private fun retrieveFilteredList(items: List<Item>) {
-//        itemList.addAll(
-//            items.sortedWith(
-//            compareBy<Item> { it.listId }
-//                .thenBy { it.name }
-//            )
-//        )
-//        adapter.notifyDataSetChanged()
-//    }
 
     private fun showProgress(status: Boolean) {
         if (status) {

@@ -13,7 +13,7 @@
 
         <variable
             name="userViewModel"
-            type="com.example.fetchapp.fetch.FetchViewModel" />
+            type="com.example.fetchapp.fetch.MainActivityViewModel" />
     </data>
     <FrameLayout
         android:layout_width="match_parent"
