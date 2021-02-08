@@ -21,9 +21,9 @@ import com.example.fetchapp.fetch.ui.ItemAdapter
 import com.example.fetchapp.fetch.ui.StickyHeaderDecoration
 
 class MainActivity : AppCompatActivity() {
-    lateinit var mainBinding: ActivityMainBinding
+    private lateinit var mainBinding: ActivityMainBinding
 
-    var itemList = ArrayList<Item>()
+    private var itemList = ArrayList<Item>()
 
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var adapter: ItemAdapter

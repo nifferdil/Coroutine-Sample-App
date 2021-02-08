@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.fetchapp.fetch.api.Service
 
 class ViewModelFactory(private val apiService: Service) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 
         if (modelClass.isAssignableFrom(MainActivityViewModel::class.java)) {

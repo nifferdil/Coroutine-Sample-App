@@ -30,7 +30,7 @@ class ItemAdapter(private val itemList: ArrayList<Item>) : StickyHeaderAdapter,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItems(itemList.get(position))
+        holder.bindItems(itemList[position])
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
