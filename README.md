@@ -1,4 +1,3 @@
-# Fetch-Rewards-App
 An Android app that displays a list of sorted items
 
 ## Getting Started
@@ -10,7 +9,7 @@ Install Android Studio
 Open workspace
 
 	Clone this repository and import into Android Studio
-	git clone https://github.com/nifferdil/Fetch-Rewards-App.git
+	git clone https://github.com/nifferdil/Coroutine-Sample-App.git
   
 Then, with the code open inside of Android Studio, press play. Your emulator will do the rest of the work.
 
@@ -35,5 +34,5 @@ The project follows MVVM architecture with AndroidX libraries and uses Retrofit 
 
 *	OkHttp
 
-* Data Binding
+*       Data Binding
 
