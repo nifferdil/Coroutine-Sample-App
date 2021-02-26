@@ -34,5 +34,8 @@ The project follows MVVM architecture with AndroidX libraries and uses Retrofit 
 
 *	OkHttp
 
-*       Data Binding
+*	Data Binding
+
+
+
 
